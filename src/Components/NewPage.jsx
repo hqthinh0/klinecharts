@@ -7,6 +7,8 @@ const NewPage = () => {
   return (
     <div>
       {text.textOne}
+
+      đây là main tôi nên test tiếp github đến hết sáng nay
     </div>
   )
 }
