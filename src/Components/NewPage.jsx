@@ -7,7 +7,6 @@ const NewPage = () => {
   return (
     <div>
       {text.textOne}
-    đã xoá dòng cũ tôi đã thêm dòng từ brand main
     </div>
   )
 }
