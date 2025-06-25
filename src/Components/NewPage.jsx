@@ -7,6 +7,7 @@ const NewPage = () => {
   return (
     <div>
       {text.textOne}
+      test checkkey
     </div>
   )
 }
