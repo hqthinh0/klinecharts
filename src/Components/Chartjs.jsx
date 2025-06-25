@@ -1,11 +1,32 @@
-import { init, dispose } from 'klinecharts';
+import { init, dispose ,registerOverlay } from 'klinecharts';
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import { ApiContext } from '../Context/ContextProvider';
 
 
+ 
+
+
 const Chartjs = () => {
 
-  //const [loading, setLoading] = useState(true);
+   registerOverlay({
+  name: 'customOverlayBasic',
+  totalStep: 2,
+  createPointFigures: ({ coordinates }) => {
+    return [ // ← phải trả về mảng
+      {
+        type: 'rect',
+        attrs: {
+          x: coordinates[0].x,
+          y: coordinates[0].y,
+          width: 50,
+          height: 50,
+          color: 'blue'
+        }
+      }
+    ]
+  }
+})
+
 
   const data = useContext(ApiContext);
   
@@ -29,21 +50,12 @@ const Chartjs = () => {
     setDateFormat(item);
   }
 
+  
   useEffect(() => {
    
   chart.current = init(chartRef.current); 
-  chart.current.setStyles({
-      candle: {
-        bar: {
-          upColor: '#8fd3e8',
-          upBorderColor: '#8fd3e8',
-          upWickColor: '#8fd3e8',
-          downColor: '#edafda',
-          downBorderColor: '#edafda',
-          downWickColor: '#edafda'
-        }
-      }
-    })
+  
+
     fetch(`https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${itemClick}&limit=1000`)
     .then(res => res.json())
     .then(dataList => {
@@ -58,7 +70,14 @@ const Chartjs = () => {
       }));
       setCandles(transformedData);
       chart.current.applyNewData(transformedData);
+       let firstItem = transformedData[0].timestamp;
+       let closeItem = transformedData[0].close;
+       chart.current.createOverlay({
+          name: 'customOverlayBasic',
+          points: [{ timestamp: firstItem, value: closeItem }],
+        })
 
+      
       chart.current.createIndicator('MA', false, {
         id: 'candle_pane',
         calcParams: [5, 10, 20],
@@ -116,6 +135,14 @@ const handleSymbols = (itemsymbol) =>{
         <label className="modal-backdrop" htmlFor="my_modal_7">Close</label>
       </div>
 
+      <button
+  className="btn btn-sm btn-outline mb-2"
+  onClick={() => {
+      chart.current.createOverlay({ name: 'customOverlayBasic' })
+  }}
+>
+  Vẽ đường trendline
+</button>
       <div style={{ position: 'relative' }}>
         <div ref={chartRef} style={{ width: '100%', height: '500px' }} />
       </div>
