@@ -7,8 +7,7 @@ const NewPage = () => {
   return (
     <div>
       {text.textOne}
-      đây là dòng test tôi muốn làm bên nhánh master
-      test checkkey
+    đã xoá dòng cũ tôi đã thêm dòng từ brand main
     </div>
   )
 }
