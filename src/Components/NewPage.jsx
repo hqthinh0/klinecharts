@@ -7,6 +7,8 @@ const NewPage = () => {
   return (
     <div>
       {text.textOne}
+      đây là dòng test tôi muốn làm bên nhánh master
+      test checkkey
     </div>
   )
 }
