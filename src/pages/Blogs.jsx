@@ -7,6 +7,7 @@ const Blogs = () => {
 
     <ContextProviderOne>
         <NewPage />
+        update branch checkout master
     </ContextProviderOne>
    
   )
