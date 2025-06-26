@@ -119,11 +119,11 @@ const handleSymbols = (itemsymbol) =>{
       })}
     </div>
     <label htmlFor="my_modal_7" className="btn">open modal</label>
-
+z
       {/* Put this part before </body> tag */}
       <input type="checkbox" id="my_modal_7" className="modal-toggle"   onClick={() => setTimeout(() => forcus.current?.focus(), 100)} />
       <div className=" modal " role="dialog">
-     
+      
         <div className="modal-box pt-0 h-96  relative">
           <div className='sticky w-full pt-3 top-0 z-10 bg-white'>
             <h3 className="text-xl font-bold mb-3 ">Chọn Symbol</h3>
@@ -132,7 +132,7 @@ const handleSymbols = (itemsymbol) =>{
           <div className='body overflow-hidden overflow-y-auto'></div>
           {data.symbols.filter(sym => sym.includes(search.toUpperCase())).map((sym, index) => (<h3 key={index} className='cursor-pointer' onClick={() => handleSymbols(sym)}>{sym}</h3>))};
           </div>
-        <label className="modal-backdrop" htmlFor="my_modal_7">Close</label>
+        <label className="modal-backdrop" htmlFor="my_modal_7"x>Close</label>
       </div>
 
       <button
@@ -157,7 +157,6 @@ const handleSymbols = (itemsymbol) =>{
                   <th>High</th>
                   <th>Low</th>
                   <th>Close</th>
-                  <th>up</th>
                   <th>Volume</th>
                 </tr>
               </thead>
@@ -169,7 +168,6 @@ const handleSymbols = (itemsymbol) =>{
                     <td>{candle.high}</td>
                     <td>{candle.low}</td>
                     <td>{candle.close}</td>
-                    <td>{parseFloat(candle.high - candle.low)}</td>
                     <td>{candle.volume}</td>
                   </tr>
                 ))}
