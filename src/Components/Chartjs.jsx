@@ -130,7 +130,7 @@ const handleSymbols = (itemsymbol) =>{
           <div className='body overflow-hidden overflow-y-auto'></div>
           {data.symbols.filter(sym => sym.includes(search.toUpperCase())).map((sym, index) => (<h3 key={index} className='cursor-pointer' onClick={() => handleSymbols(sym)}>{sym}</h3>))};
           </div>
-        <label className="modal-backdrop" htmlFor="my_modal_7"x>Close</label>
+        <label className="modal-backdrop" htmlFor="my_modal_7">Close</label>
       </div>
       <button
   className="btn btn-sm btn-outline mb-2"
