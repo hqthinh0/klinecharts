@@ -119,8 +119,6 @@ const handleSymbols = (itemsymbol) =>{
       })}
     </div>
     <label htmlFor="my_modal_7" className="btn">open modal</label>
-z
-      {/* Put this part before </body> tag */}
       <input type="checkbox" id="my_modal_7" className="modal-toggle"   onClick={() => setTimeout(() => forcus.current?.focus(), 100)} />
       <div className=" modal " role="dialog">
       
@@ -134,7 +132,6 @@ z
           </div>
         <label className="modal-backdrop" htmlFor="my_modal_7"x>Close</label>
       </div>
-
       <button
   className="btn btn-sm btn-outline mb-2"
   onClick={() => {
