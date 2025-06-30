@@ -21,4 +21,4 @@ const EditToDo = (payload) =>{
     }
 }
 
-export {AddTodo , DeleteTodo}
+export {AddTodo , DeleteTodo, EditToDo}
